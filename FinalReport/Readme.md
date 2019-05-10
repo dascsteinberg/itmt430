@@ -1,4 +1,4 @@
-#Sprint 4: Jr. Developer
+# Sprint 4: Jr. Developer
 
 1. Accomplishments 
 2. Comments 
@@ -9,32 +9,32 @@
 
 * Removed plain text passwords
 
-*Before*
+*Before*  
 The original script that input the 15 test users into the database used plain text for the passwords, which were also stored in 
 the database in the same manner. This is a huge security issue, but allowed us to initiate the database with users that could be 
 accessed by other members working on other portions of the project.  
 
 ![DB Before](images/img1.png "DB Before")
 
-*After*
+*After*  
 Now the passwords are hashed using SHA256 to be used in the database creation script to prevent plain text passwords at creation. 
 For each user their hash is then used with a random salt to create a SHA256 hash that is used in the database password field 
 “pass.” The salt is also recorded in the field “salt” to be used for verification purposes later.  
 
 ![DB After](images/img2.png "DB After")
 
-* Data-in-use encryption for the databases
+* Data-in-use encryption for the databases  
 Enabled the keyring plugin for MYSQL to encrypt the database files that are in use. This will only allow valid users logged 
 into MYSQL to access the information in the Users table. That is the only table with sensitive information.  
 
 ![DB Encryption](images/img3.png "DB Encryption")
 
-* Data-at-rest using OpenSSL
+* Data-at-rest using OpenSSL  
 OpenSSL will be used when sql dumps are made of the databases, either to archive them or for export/import purposes. This will 
 be be implemented when the export and import feature are added to the admin portion of the web app. A passphrase will be used 
 at the time of export to encrypt the sql file so it can be used on another machine if needed. 
 
-1. Comments:
+1. Comments:  
 
 Started by converting all plain text passwords to SHA-256 hashes. We then combined that hash with a salt to create a new SHA-256 
 hash to create another layer of separation and security between the plain text and what is stored in our database. I was working 
@@ -58,12 +58,12 @@ Data-in-use - https://github.com/illinoistech-itm/2019-team-03r/commit/ca88ff21d
 
 #### 2.  Load correct web page view based on privileges/registration status
 
-*Milestones:*
+*Milestones:*  
 *Can login with any credentials and web page will change accordingly- Completed
 *Incorporate privileges based on user credentials- In Progress
 *Allow for proper registration and use of those credentials to login- In Progress
 
-1. Comments:
+1. Comments:  
 
 Raiven, Ian, and I worked on getting the correct webpage to load based on whether or not the user as an admin. We changed 
 some of the variable names, such as dropping an email for a username to an actual user name. Capabilities were added to the 
@@ -74,7 +74,7 @@ testing who then pushed it to the repo.
 
 ![Trello Load](images/img5.png "Trello Load")
 
-3. Github Commit Link(s):
+3. Github Commit Link(s):  
 Login Python-
 https://github.com/illinoistech-itm/2019-team-03r/commit/b92a15bb7b2eb3c58cb7174fd7564110c0a80ab6#diff-b09cb984d0509837482be4c4f9e34eb2
 HTML name changes-
@@ -82,13 +82,13 @@ https://github.com/illinoistech-itm/2019-team-03r/commit/86dc9be43a8195622256a67
 Changing nav bar-
 https://github.com/illinoistech-itm/2019-team-03r/commit/392fefb16ddf9e20a11e7c3dabc1a9533cc3a73a
 
-#### 6. Continue to expand python/Flask/API use:
-*Milestones:*
+#### 6. Continue to expand python/Flask/API use:  
+*Milestones:*  
 * Implement custom user settings (stars, distance, etc)- Completed
 * Create a connection between the website and database- In Progress
 * Incorporate functionality for the additional information about restaurant page (i.e. contact, most recent review, distance)- In Progress
 
-1. Comments:
+1. Comments:  
 
 Raiven, Ian, and I added accuracy to the app by improving our Yelp search functions. We accomplished this by transferring user inputs on the site into the calls to the Yelp API. We also created more stable default settings for if the user did not input any options. Ian pushed the final product out after testing it. 
 
@@ -96,23 +96,24 @@ Raiven, Ian, and I added accuracy to the app by improving our Yelp search functi
 
 ![Trello Expand](images/img6.png "Trello Expand")
 
-3. Github Commit Link(s):
+3. Github Commit Link(s):  
 Use user provided specifications for a more detailed restaurant 
 https://github.com/illinoistech-itm/2019-team-03r/commit/de76a63b3a9c9924a96f203423cb8d80fda2a8f8
 
-#Sprint 5: Jr. Developer
+# Sprint 5: Jr. Developer  
 
 1. Accomplishments 
 2. Comments 
 3. Trello Card(s)
 4. Commit(s)
 
-##### 2. Implement functionality on “Top Review” and “Try Again” buttons on the search results page
+##### 2. Implement functionality on “Top Review” and “Try Again” buttons on the search results page  
+
 Implement functionality on “Top Review” to take the user to the second part of the page showing a user review and 
 another button to return without reloading the page.  “Try Again” buttons on the search results page to allow a user 
 to try their luck again if the initially selected place is not somewhere they would like to go.
 
-Comments:
+Comments:  
 
 We changed API query results from being input directly to the webpage into session related variables. This allowed us to 
 keep track of what the user had searched for so we didn’t duplicate results during the Try Again function. We could also 
@@ -123,13 +124,13 @@ Trello Card:
 
 ![Trello Buttons](images/img7.png "Trello Buttons")
 
-Commit Link(s):
+Commit Link(s):  
 
 Try again implemented - https://github.com/illinoistech-itm/2019-team-03r/commit/16c68ec59a9b79e8d4d7d36d7ec9ec128a2a45ee
 
 #### 3. Load correct web page view based on privileges/registration status
 
-*Milestones:*
+*Milestones:*  
 
 * Incorporate privileges based on user credentials
 
@@ -167,13 +168,13 @@ Without a connection to the database, the ability to properly register a new acc
 ![DB Post-Register](images/img12.png "DB Post-Register")  
 ![Post-Register Login](images/img13.png "Post-Register Login")  
 
-Commit Link(s):
+Commit Link(s):  
 Backend code : check user entered data, register it in the db if viable else return error - 
 https://github.com/illinoistech-itm/2019-team-03r/commit/596de10ebd5c185f526dd8debe43f7a24656d392
 Backend login code: make a call to the db to check user credentials, verify, and update login status - 
 https://github.com/illinoistech-itm/2019-team-03r/commit/1922f85dfb17d78aa81241c208d60a44124648c9
 
-Comments:
+Comments:  
 
 Ian, Tim, and I had created a function to check the database for the privilege value associated with a user once they log in. 
 If the user had a “1” then they were an admin and given access to the admin page. Standard users have a privilege value of “0” 
@@ -193,7 +194,7 @@ Our code was still incomplete when it came to the interaction between web server
 additional information page, usage of user data, and proper functionality of options such as logging out. These 4 tasks were 
 our main objective for the backend aspect in regards to Python, Flask, and API use. 
 
-*Milestones:* 
+*Milestones:*  
 
 * Create a connection between the website and database
 
@@ -218,7 +219,7 @@ different options then users not logged in.
 ![DB User Info](images/img17.png "DB User Info")
 
 Commit Link(s):
-dbCon.py file handles database connections:
+dbCon.py file handles database connections:  
 
 Sign up functionality -  
 https://github.com/illinoistech-itm/2019-team-03r/commit/596de10ebd5c185f526dd8debe43f7a24656d392
@@ -265,11 +266,11 @@ to actually log out the user after they are signed in.
 
 ![Logout Confirmation](images/img22.png "Logout Confirmation")
 
-Commit Link(s): 
+Commit Link(s):  
 
 Logout function in tendies.py -  https://github.com/illinoistech-itm/2019-team-03r/commit/5f01612bbfc6f2f18dfef001fb50a35ee9cf85d2
 
-Comments:
+Comments:  
 
 As mentioned earlier, Tim, Ian, and I changed the Yelp query results to session variables. This allowed us to use them how we 
 wanted and present them to the user in more ways, as well as session cookies. We created a <code>logout</code> function that ends 
@@ -280,14 +281,15 @@ Trello Card:
 
 ![Trello Expand](images/img23.png "Trello Expand")
 
-Sprint 6: IT Operations
+# Sprint 6: IT Operations
 
-Accomplishments 
-Comments 
-Trello Card(s)
-Commit(s)
+1. Accomplishments 
+2. Comments 
+3. Trello Card(s)
+4. Commit(s)
 
 #### 1. Implement Admin Powers
+
 During the last sprint, we had set up an admin page that was only accessible to users that were set with admin privileges. The 
 page has 3 buttons which were to export database, restore database, and reset passwords. Adding functionality to this page and 
 the 3 buttons was a big focus on Sprint 6.
@@ -299,6 +301,7 @@ the 3 buttons was a big focus on Sprint 6.
 *Milestones:*
 
 ##### Password Change
+
 One ability that an administrator level user has is to change password. The button had existed on the admin page during Sprint 
 5 but the functionality has now been implemented. 
 
@@ -322,6 +325,7 @@ Commit Link(s):
 https://github.com/illinoistech-itm/2019-team-03r/commit/1c43d80e8bb1435d62fbb5e58a569c968f23959f
 
 ##### Export DB
+
 Another duty of the admin is to export a database for backup purposes or transferring to another database. A 
 <code>mysqldump</code> of the tendiesdb database provides us with a sql file that contains all of the contents of the 
 database, as well as commands needed to be imported into another database (CREATE TABLE, INSERT INTO TABLE, etc.). OpenSSL 
@@ -336,7 +340,7 @@ and passphrase. Dumps are taken from the “read” slave database.
 
 ![Encrypted Dump](images/img30.png "Encrypted Dump")
 
-Commit Link(s):
+Commit Link(s):  
 https://github.com/illinoistech-itm/2019-team-03r/commit/d3c698f3252c7a2aaa804e35b75d346882f6e158
 https://github.com/illinoistech-itm/2019-team-03r/commit/057c4c49e1db01567676682c57ed1f67568633b2
 
@@ -349,12 +353,12 @@ function then decrypts the dump file and imports it into the “write” master 
 
 ![Import](images/img31.png "Import")
 
-Commit Link(s):
+Commit Link(s):  
 https://github.com/illinoistech-itm/2019-team-03r/commit/d3c698f3252c7a2aaa804e35b75d346882f6e158
 https://github.com/illinoistech-itm/2019-team-03r/commit/0850038c916034711c3b724428748771d3b1b23e
 
 
-Comments:
+Comments:  
 
 Tim was having computer issues so Raiven and Akvile helped him with the UI duties. With not much to be done with IT Operations I assisted Matt with creating export and import functions of the database. Added mysql-client to the post install script of the web servers to be able to do a <code>mysqldump</code> of the database. It was either this or do a whole bunch of work creating users with limited privileges, setting up file sharing features to both the web and database servers, and adding firewall rules. This option allowed us to pull the correct data from the databases with pre-existing features, while also limiting capabilities of the user between the two types of servers. Additionally, <code>mysqldump</code> allows us to incorporate all of the additional MySQL commands needed to import the sql file into another database. No need to add complexity to a process that is already in place that fits our needs.
 
